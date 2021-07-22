@@ -1,0 +1,155 @@
+{
+  "version": 1,
+  "projects": {
+    "klb-frontend": {
+      "projectType": "application",
+      "root": "apps/klb-frontend",
+      "sourceRoot": "apps/klb-frontend/src",
+      "prefix": "frontend",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "outputs": ["{options.outputPath}"],
+          "options": {
+            "outputPath": "dist/apps/klb-frontend",
+            "index": "apps/klb-frontend/src/index.html",
+            "main": "apps/klb-frontend/src/main.ts",
+            "polyfills": "apps/klb-frontend/src/polyfills.ts",
+            "tsConfig": "apps/klb-frontend/tsconfig.app.json",
+            "inlineStyleLanguage": "scss",
+            "assets": [
+              "apps/klb-frontend/src/favicon.ico",
+              "apps/klb-frontend/src/assets"
+            ],
+            "styles": ["apps/klb-frontend/src/styles.scss"],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "500kb",
+                  "maximumError": "1mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "2kb",
+                  "maximumError": "4kb"
+                }
+              ],
+              "fileReplacements": [
+                {
+                  "replace": "apps/klb-frontend/src/environments/environment.ts",
+                  "with": "apps/klb-frontend/src/environments/environment.prod.ts"
+                }
+              ],
+              "outputHashing": "all"
+            },
+            "development": {
+              "buildOptimizer": false,
+              "optimization": false,
+              "vendorChunk": true,
+              "extractLicenses": false,
+              "sourceMap": true,
+              "namedChunks": true
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "configurations": {
+            "production": {
+              "browserTarget": "klb-frontend:build:production"
+            },
+            "development": {
+              "browserTarget": "klb-frontend:build:development"
+            }
+          },
+          "defaultConfiguration": "development"
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "klb-frontend:build"
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "apps/klb-frontend/src/**/*.ts",
+              "apps/klb-frontend/src/**/*.html"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/apps/klb-frontend"],
+          "options": {
+            "jestConfig": "apps/klb-frontend/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "klb-frontend-e2e": {
+      "root": "apps/klb-frontend-e2e",
+      "sourceRoot": "apps/klb-frontend-e2e/src",
+      "projectType": "application",
+      "architect": {
+        "e2e": {
+          "builder": "@nrwl/cypress:cypress",
+          "options": {
+            "cypressConfig": "apps/klb-frontend-e2e/cypress.json",
+            "tsConfig": "apps/klb-frontend-e2e/tsconfig.e2e.json",
+            "devServerTarget": "klb-frontend:serve:development"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "klb-frontend:serve:production"
+            }
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": ["apps/klb-frontend-e2e/**/*.{js,ts}"]
+          }
+        }
+      }
+    }
+  },
+  "cli": {
+    "defaultCollection": "@nrwl/angular"
+  },
+  "schematics": {
+    "@nrwl/angular": {
+      "application": {
+        "linter": "eslint"
+      },
+      "library": {
+        "linter": "eslint"
+      },
+      "storybook-configuration": {
+        "linter": "eslint"
+      }
+    },
+    "@nrwl/angular:application": {
+      "style": "scss",
+      "linter": "eslint",
+      "unitTestRunner": "jest",
+      "e2eTestRunner": "cypress"
+    },
+    "@nrwl/angular:library": {
+      "style": "scss",
+      "linter": "eslint",
+      "unitTestRunner": "jest"
+    },
+    "@nrwl/angular:component": {
+      "style": "scss"
+    }
+  },
+  "defaultProject": "klb-frontend"
+}
