@@ -1,5 +1,5 @@
 {
-  "extends": ["../../.eslintrc.json"],
+  "extends": ["../../../.eslintrc.json"],
   "ignorePatterns": ["!**/*"],
   "overrides": [
     {
@@ -10,14 +10,14 @@
         "@vrz/eslint-config-standard"
       ],
       "parserOptions": {
-        "project": ["apps/klb-frontend/tsconfig.*?.json"]
+        "project": ["libs/product/domain/tsconfig.*?.json"]
       },
       "rules": {
         "@angular-eslint/directive-selector": [
           "error",
           {
             "type": "attribute",
-            "prefix": "frontend",
+            "prefix": "product",
             "style": "camelCase"
           }
         ],
@@ -25,7 +25,7 @@
           "error",
           {
             "type": "element",
-            "prefix": "frontend",
+            "prefix": "product",
             "style": "kebab-case"
           }
         ]

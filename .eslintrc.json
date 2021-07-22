@@ -1,11 +1,25 @@
 {
   "root": true,
-  "ignorePatterns": ["**/*"],
-  "plugins": ["@nrwl/nx", "import", "node", "promise"],
+  "ignorePatterns": [
+    "**/*"
+  ],
+  "plugins": [
+    "@nrwl/nx",
+    "import",
+    "node",
+    "promise"
+  ],
   "overrides": [
     {
-      "files": ["*.ts", "*.tsx", "*.js", "*.jsx"],
-      "extends": ["@vrz/eslint-config-standard"],
+      "files": [
+        "*.ts",
+        "*.tsx",
+        "*.js",
+        "*.jsx"
+      ],
+      "extends": [
+        "@vrz/eslint-config-standard"
+      ],
       "rules": {
         "@nrwl/nx/enforce-module-boundaries": [
           "error",
@@ -41,15 +55,29 @@
               },
               {
                 "sourceTag": "type:ui",
-                "onlyDependOnLibsWithTags": ["type:domain-logic", "type:util"]
+                "onlyDependOnLibsWithTags": [
+                  "type:domain-logic",
+                  "type:util"
+                ]
               },
               {
                 "sourceTag": "type:domain-logic",
-                "onlyDependOnLibsWithTags": ["type:util"]
+                "onlyDependOnLibsWithTags": [
+                  "type:util"
+                ]
               },
               {
                 "sourceTag": "domain:shared",
-                "onlyDependOnLibsWithTags": ["domain:shared"]
+                "onlyDependOnLibsWithTags": [
+                  "domain:shared"
+                ]
+              },
+              {
+                "sourceTag": "domain:product",
+                "onlyDependOnLibsWithTags": [
+                  "domain:product",
+                  "domain:shared"
+                ]
               }
             ]
           }
@@ -57,16 +85,28 @@
       }
     },
     {
-      "files": ["*.ts", "*.tsx"],
-      "extends": ["plugin:@nrwl/nx/typescript", "@vrz/eslint-config-standard"],
+      "files": [
+        "*.ts",
+        "*.tsx"
+      ],
+      "extends": [
+        "plugin:@nrwl/nx/typescript",
+        "@vrz/eslint-config-standard"
+      ],
       "parserOptions": {
         "project": "./tsconfig.*?.json"
       },
       "rules": {}
     },
     {
-      "files": ["*.js", "*.jsx"],
-      "extends": ["plugin:@nrwl/nx/javascript", "@vrz/eslint-config-standard"],
+      "files": [
+        "*.js",
+        "*.jsx"
+      ],
+      "extends": [
+        "plugin:@nrwl/nx/javascript",
+        "@vrz/eslint-config-standard"
+      ],
       "rules": {}
     }
   ]

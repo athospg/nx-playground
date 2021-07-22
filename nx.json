@@ -33,6 +33,12 @@
     "klb-frontend-e2e": {
       "tags": [],
       "implicitDependencies": ["klb-frontend"]
+    },
+    "product-domain": {
+      "tags": ["domain:product", "type:domain-logic"]
+    },
+    "product-feature-view": {
+      "tags": ["domain:product", "type:feature"]
     }
   }
 }

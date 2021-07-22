@@ -9,7 +9,9 @@
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
-          "outputs": ["{options.outputPath}"],
+          "outputs": [
+            "{options.outputPath}"
+          ],
           "options": {
             "outputPath": "dist/apps/klb-frontend",
             "index": "apps/klb-frontend/src/index.html",
@@ -21,7 +23,9 @@
               "apps/klb-frontend/src/favicon.ico",
               "apps/klb-frontend/src/assets"
             ],
-            "styles": ["apps/klb-frontend/src/styles.scss"],
+            "styles": [
+              "apps/klb-frontend/src/styles.scss"
+            ],
             "scripts": []
           },
           "configurations": {
@@ -86,7 +90,9 @@
         },
         "test": {
           "builder": "@nrwl/jest:jest",
-          "outputs": ["coverage/apps/klb-frontend"],
+          "outputs": [
+            "coverage/apps/klb-frontend"
+          ],
           "options": {
             "jestConfig": "apps/klb-frontend/jest.config.js",
             "passWithNoTests": true
@@ -115,7 +121,63 @@
         "lint": {
           "builder": "@nrwl/linter:eslint",
           "options": {
-            "lintFilePatterns": ["apps/klb-frontend-e2e/**/*.{js,ts}"]
+            "lintFilePatterns": [
+              "apps/klb-frontend-e2e/**/*.{js,ts}"
+            ]
+          }
+        }
+      }
+    },
+    "product-domain": {
+      "projectType": "library",
+      "root": "libs/product/domain",
+      "sourceRoot": "libs/product/domain/src",
+      "prefix": "product",
+      "architect": {
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": [
+            "coverage/libs/product/domain"
+          ],
+          "options": {
+            "jestConfig": "libs/product/domain/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/product/domain/src/**/*.ts",
+              "libs/product/domain/src/**/*.html"
+            ]
+          }
+        }
+      }
+    },
+    "product-feature-view": {
+      "projectType": "library",
+      "root": "libs/product/feature-view",
+      "sourceRoot": "libs/product/feature-view/src",
+      "prefix": "product",
+      "architect": {
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": [
+            "coverage/libs/product/feature-view"
+          ],
+          "options": {
+            "jestConfig": "libs/product/feature-view/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/product/feature-view/src/**/*.ts",
+              "libs/product/feature-view/src/**/*.html"
+            ]
           }
         }
       }
